@@ -1,0 +1,13 @@
+boto3
+botocore
+aws_xray_sdk
+numpy
+pandas
+s3fs
+seaborn
+matplotlib
+requests
+certifi
+chardet
+idna
+urllib3

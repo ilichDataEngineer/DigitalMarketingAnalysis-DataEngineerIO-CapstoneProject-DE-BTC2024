@@ -1,0 +1,27 @@
+service: data-engineering-jobs
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: us-east-2
+
+plugins:
+  - serverless-python-requirements
+
+package:
+  individually: true
+
+functions:
+  theLambda:
+    name: test-lambda
+    handler: jobs.handler
+    description: test-lambda
+    timeout: 5 # seconds
+    memorySize: 128 # mb
+    package:
+      patterns:
+        - "!node_modules/**"
+        - "!yarn.lock"
+        - "!package-lock.json"
+        - "!package.json"
