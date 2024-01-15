@@ -70,9 +70,6 @@ jobs:
       - name: Install Node dependencies (specifically, serverless-python-requirements)
         run: npm install
 
-      - name: Pop Serverless Directory
-        run: popd
-
       - name: Serverless Deploy
         uses: dhollerbach/github-action-serverless-with-python-requirements@master
         env:
