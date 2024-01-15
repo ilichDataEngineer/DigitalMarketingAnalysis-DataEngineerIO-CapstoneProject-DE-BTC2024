@@ -30,7 +30,7 @@ jobs:
           # This path is specific to Ubuntu
           path: ~/.cache/pip
           # Look to see if there is a cache hit for the corresponding requirements file
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('data-ingestion/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
             ${{ runner.os }}-
@@ -38,7 +38,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flake8 pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f data-ingestion/requirements.txt ]; then pip install -r data-ingestion/requirements.txt; fi
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
@@ -64,15 +64,16 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
       - name: Install Node dependencies (specifically, serverless-python-requirements)
         run: |
           cd data-ingestion
           npm install
 
       - name: Serverless Deploy
-        uses: dhollerbach/github-action-serverless-with-python-requirements@master
-        with:
-          working-directory: data-ingestion
+        run: |
+          cd data-ingestion
+          npx serverless deploy
         env:
           # SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
           # or if using AWS credentials directly
