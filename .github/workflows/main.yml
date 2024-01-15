@@ -18,6 +18,11 @@ jobs:
     steps:
       # --------- use Python to install Python dependencies and run linter, tests, etc. ---------
       - uses: actions/checkout@v2
+
+      - name: Change to Serverless Directory
+        working-directory: lambda-serverless/
+        run: cd lambda-serverless
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -64,7 +69,6 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install Node dependencies (specifically, serverless-python-requirements)
-        working-directory: lambda-serverless/
         run: npm install
 
       - name: Serverless Deploy
