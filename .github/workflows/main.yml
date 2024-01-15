@@ -19,9 +19,6 @@ jobs:
       # --------- use Python to install Python dependencies and run linter, tests, etc. ---------
       - uses: actions/checkout@v2
 
-      - name: Change to Serverless Directory
-        run: pushd lambda-serverless
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -54,6 +51,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
+
+      - name: Change to Serverless Directory
+        run: cd path/to/lambda-serverless
 
       - name: Cache node modules
         uses: actions/cache@v2
