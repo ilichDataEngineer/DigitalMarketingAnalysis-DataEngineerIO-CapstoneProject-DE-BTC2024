@@ -2,7 +2,8 @@ name: Deploy Python Lambda
 
 on:
   push:
-    branches: [master]
+    branches: 
+       - master
 
 jobs:
   deploy:
