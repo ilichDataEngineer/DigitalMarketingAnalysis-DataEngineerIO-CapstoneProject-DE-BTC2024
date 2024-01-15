@@ -52,9 +52,6 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Change to Serverless Directory
-        run: cd path/to/lambda-serverless
-
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -68,7 +65,9 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install Node dependencies (specifically, serverless-python-requirements)
-        run: npm install
+        run: |
+          cd data-ingestion/
+          npm install
 
       - name: Serverless Deploy
         uses: dhollerbach/github-action-serverless-with-python-requirements@master
