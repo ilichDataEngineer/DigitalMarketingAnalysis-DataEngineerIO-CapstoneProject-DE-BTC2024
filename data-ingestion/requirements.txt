@@ -11,4 +11,3 @@ certifi
 chardet
 idna
 urllib3
-time
