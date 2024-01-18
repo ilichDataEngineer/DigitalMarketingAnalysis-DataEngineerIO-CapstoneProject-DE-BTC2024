@@ -13,15 +13,15 @@ package:
   individually: true
 
 functions:
-  theLambda:
-    name: test-lambda
-    handler: jobs.handler
-    description: test-lambda
-    timeout: 5 # seconds
-    memorySize: 128 # mb
-    package:
-      patterns:
-        - "!node_modules/**"
-        - "!yarn.lock"
-        - "!package-lock.json"
-        - "!package.json"
+
+  elt_zoho_crm:
+    handler: jobs.elt_serpstack
+    description: Function to retrieve and upload Serpstack API data
+    # timeout: 5 # seconds
+    # memorySize: 128 # mb
+    # package:
+    #   patterns:
+    #     - "!node_modules/**"
+    #     - "!yarn.lock"
+    #     - "!package-lock.json"
+    #     - "!package.json"
