@@ -116,15 +116,18 @@ def save_results_to_csv(data):
 
     # Iterate over the queries
     for query_key in data:
+        print(f"Top-level key: {query_key}")
 
         # Iterate over the json result
         for json_result_type, json_inner_schema in data[query_key].items():
+            print(f"  Inner key: {json_result_type}")
 
             # Iterate throught the expected dictionary structure
             for given_result_type, given_inner_schema in columns_mapping.items():
 
                 # Check if the json_result matches the exected result_type
                 if json_result_type == given_result_type:
+                    print(f"    Inner key MATCHED! {json_result_type}")
 
                     # Create a DataFrame from the JSON data
                     df = pd.DataFrame()
@@ -140,9 +143,11 @@ def save_results_to_csv(data):
 
                                 # Evaluate if the JSON inner column matches the expected json values
                                 if json_inner_key == given_inner_value:
-
+                        
                                     df = df.append({'Query': query_key, 'Col': given_inner_key, 'Value': json_inner_value}, ignore_index=True)
-
+                        
+                            print(f"      DICT - Query: {query_key}, Col: {given_inner_key}, Val: {json_inner_value}")
+                        
                         # Convert DataFrame to CSV string
                         csv_content = df.to_csv(index=False)
 
@@ -169,6 +174,8 @@ def save_results_to_csv(data):
                             for result in matched_values:
                                 # Create a DataFrame from the list
                                 df = pd.DataFrame(result)
+
+                            print(f"      LIST - Query: {query_key}, Col: {given_inner_key}, Val: {json_inner_value}")
 
                         # Convert DataFrame to CSV string
                         csv_content = df.to_csv(index=False)

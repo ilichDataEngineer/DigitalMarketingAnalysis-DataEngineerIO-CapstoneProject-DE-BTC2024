@@ -12,6 +12,6 @@ from libraries import serpstack
 #     return None
 
 def elt_serpstack(event, context):
-    keywords = ["data engineering services", "data analysis services", "mcdonalds"]
+    keywords = ["mcdonalds"]
     location = "us"
     serpstack.serpStackApi().make_api_request(keywords, location)
