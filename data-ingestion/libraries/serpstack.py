@@ -109,6 +109,8 @@ def save_results_to_csv(data):
     timestamp = dt.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     current_date = dt.datetime.now()
 
+    result_dfs = {}
+
     # Upload to S3
     s3 = boto3.client('s3')
 
@@ -116,24 +118,24 @@ def save_results_to_csv(data):
 
     # Iterate over the queries
     for query_key in data:
-        print(f"Top-level key: {query_key}")
 
         # Iterate over the json result
         for json_result_type, json_inner_schema in data[query_key].items():
-            print(f"  Inner key: {json_result_type}")
 
             # Iterate throught the expected dictionary structure
             for given_result_type, given_inner_schema in columns_mapping.items():
 
                 # Check if the json_result matches the exected result_type
                 if json_result_type == given_result_type:
-                    print(f"    Inner key MATCHED! {json_result_type}")
 
-                    # Create a DataFrame from the JSON data
-                    df = pd.DataFrame()
+                    # Check if a DataFrame for this json_result_type already exists
+                    if json_result_type not in result_dfs:
+                        result_dfs[json_result_type] = pd.DataFrame()
 
                     # Evaluate if the JSON inner value is a Dictionary
                     if isinstance(json_inner_schema, dict):
+
+                        list_append_dic = []
 
                         # Iterate throught the JSON inners values
                         for json_inner_key, json_inner_value in json_inner_schema.items():
@@ -144,48 +146,50 @@ def save_results_to_csv(data):
                                 # Evaluate if the JSON inner column matches the expected json values
                                 if json_inner_key == given_inner_value:
                         
-                                    df = df.append({'Query': query_key, 'Col': given_inner_key, 'Value': json_inner_value}, ignore_index=True)
-                        
-                            print(f"      DICT - Query: {query_key}, Col: {given_inner_key}, Val: {json_inner_value}")
-                        
-                        # Convert DataFrame to CSV string
-                        csv_content = df.to_csv(index=False)
+                                    list_append_dic.append({'Query': query_key, 'Col': given_inner_value, 'Value': json_inner_value})
 
-                        # Create the S3 key with the dynamic file prefix
-                        s3_key = f'staging-zone/serpstack-api/{json_result_type}/{current_date.year}/{current_date.month}/{current_date.day}/{json_result_type}_{timestamp}.csv'
+                            # Append to the DataFrame for this json_result_type and reset the index
+                            result_dfs[json_result_type] = pd.concat([result_dfs[json_result_type], pd.DataFrame(list_append_dic)], ignore_index=True)
 
-                        # Upload CSV content to S3
-                        s3.put_object(Body=csv_content, Bucket=bucket_name, Key=s3_key)
+                            # Convert 'Value' column to string representation
+                            result_dfs[json_result_type]['Value'] = result_dfs[json_result_type]['Value'].astype(str)
+
+                            # Drop duplicate rows based on 'Query', 'Col', and 'Value' columns
+                            result_dfs[json_result_type] = result_dfs[json_result_type].drop_duplicates(subset=['Query', 'Col', 'Value'])
 
                     # Evaluate if the JSON inner value is a List
                     elif isinstance(json_inner_schema, list):
 
+                        list_append_list = []
+
                         for item in json_inner_schema:
-                            # Iterate throught the expected inner values
-                            matched_values = []
 
                             for given_inner_key, given_inner_value in given_inner_schema.items():
 
                                 # Check if the json_key is present in the current row
                                 if given_inner_value in item:
                                     
-                                    matched_values.append({'Query': query_key, 'Col': given_inner_value, 'Value': item[given_inner_value]})
+                                    list_append_list.append({'Query': query_key, 'Col': given_inner_value, 'Value': item[given_inner_value]})
                             
-                            for result in matched_values:
-                                # Create a DataFrame from the list
-                                df = pd.DataFrame(result)
+                            # Append to the DataFrame for this json_result_type and reset the index
+                            result_dfs[json_result_type] = pd.concat([result_dfs[json_result_type], pd.DataFrame(list_append_list)], ignore_index=True)
 
-                            print(f"      LIST - Query: {query_key}, Col: {given_inner_key}, Val: {json_inner_value}")
+                            # Convert 'Value' column to string representation
+                            result_dfs[json_result_type]['Value'] = result_dfs[json_result_type]['Value'].astype(str)
 
-                        # Convert DataFrame to CSV string
-                        csv_content = df.to_csv(index=False)
+                            # Drop duplicate rows based on 'Query', 'Col', and 'Value' columns
+                            result_dfs[json_result_type] = result_dfs[json_result_type].drop_duplicates(subset=['Query', 'Col', 'Value'])
 
-                        # Create the S3 key with the dynamic file prefix
-                        s3_key = f'staging-zone/serpstack-api/{json_result_type}/{current_date.year}/{current_date.month}/{current_date.day}/{json_result_type}_{timestamp}.csv'
+    for json_result_type, result_df in result_dfs.items():
 
-                        # Upload CSV content to S3
-                        s3.put_object(Body=csv_content, Bucket=bucket_name, Key=s3_key)
+        result_df_copy = result_df.copy()
+        result_df_copy.reset_index(drop=True, inplace=True)
 
-                    else:
-                        print(f"I don't know that it is! {json_inner_schema}")
+        # Create the S3 key with the dynamic file prefix
+        s3_key = f'staging-zone/serpstack-api/{json_result_type}/{current_date.year}/{current_date.month}/{current_date.day}/{json_result_type}_{timestamp}.csv'
+
+        csv_content = result_df_copy.to_csv(index=False)
+
+        # Upload CSV content to S3
+        s3.put_object(Body=csv_content, Bucket=bucket_name, Key=s3_key)
 
