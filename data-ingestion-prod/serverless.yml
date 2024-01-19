@@ -7,7 +7,6 @@ provider:
   region: us-east-2
   logRetentionInDays: 60
   timeout: 900
-  profile: serverlessUser
   iam:
     role: arn:aws:iam::780596713330:role/lambda-functions-serverless
 
