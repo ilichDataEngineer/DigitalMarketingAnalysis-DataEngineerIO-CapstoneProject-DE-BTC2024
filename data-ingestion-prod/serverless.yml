@@ -22,8 +22,8 @@ functions:
   elt_zoho_crm:
     handler: jobs.elt_serpstack
     description: Function to retrieve and upload Serpstack API data
-    events:
-      - schedule:
-          name: EltSerpstackJobTrigger
-          rate: cron(0 0 * * ? *) # Every day at 12:00 AM (UTC-5)
-          enabled: false
+    # events:
+    #   - schedule:
+    #       name: EltSerpstackJobTrigger
+    #       rate: cron(0 0 * * ? *) # Every day at 12:00 AM (UTC-5)
+    #       enabled: false
