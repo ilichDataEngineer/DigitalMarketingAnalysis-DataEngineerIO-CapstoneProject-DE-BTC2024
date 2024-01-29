@@ -1,0 +1,29 @@
+service: data-engineering-jobs
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: us-east-2
+  logRetentionInDays: 60
+  timeout: 900
+  iam:
+    role: arn:aws:iam::780596713330:role/lambda-functions-serverless
+
+
+plugins:
+  - serverless-python-requirements
+
+package:
+  individually: true
+
+functions:
+
+  elt_zoho_crm:
+    handler: jobs.elt_serpstack
+    description: Function to retrieve and upload Serpstack API data
+    # events:
+    #   - schedule:
+    #       name: EltSerpstackJobTrigger
+    #       rate: cron(0 0 * * ? *) # Every day at 12:00 AM (UTC-5)
+    #       enabled: false
