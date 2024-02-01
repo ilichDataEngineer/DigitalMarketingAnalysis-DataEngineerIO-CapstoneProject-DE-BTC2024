@@ -146,7 +146,7 @@ def save_results_to_csv(data):
                                 # Evaluate if the JSON inner column matches the expected json values
                                 if json_inner_key == given_inner_value:
                         
-                                    list_append_dic.append({'Query': query_key, 'Col': given_inner_value, 'Value': json_inner_value})
+                                    list_append_dic.append({'Query': query_key, 'Col': given_inner_value, 'Value': json_inner_value, 'IngestionDt': timestamp})
 
                             # Append to the DataFrame for this json_result_type and reset the index
                             result_dfs[json_result_type] = pd.concat([result_dfs[json_result_type], pd.DataFrame(list_append_dic)], ignore_index=True)
@@ -169,7 +169,7 @@ def save_results_to_csv(data):
                                 # Check if the json_key is present in the current row
                                 if given_inner_value in item:
                                     
-                                    list_append_list.append({'Query': query_key, 'Col': given_inner_value, 'Value': item[given_inner_value]})
+                                    list_append_list.append({'Query': query_key, 'Col': given_inner_value, 'Value': item[given_inner_value], 'IngestionDt': timestamp})
                             
                             # Append to the DataFrame for this json_result_type and reset the index
                             result_dfs[json_result_type] = pd.concat([result_dfs[json_result_type], pd.DataFrame(list_append_list)], ignore_index=True)
