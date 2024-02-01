@@ -43,3 +43,7 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+# jupyter local tests
+data-test/
+.jupyter_dev
