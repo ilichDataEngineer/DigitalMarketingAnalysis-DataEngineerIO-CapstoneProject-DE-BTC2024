@@ -1,0 +1,94 @@
+[0m21:59:40.710218 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AEA395250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AEA0AE010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AEA0AF210>]}
+
+
+============================== 21:59:40.714251 | 7d36f4e7-4bb6-4b12-b7f7-a1a577a3ab7b ==============================
+[0m21:59:40.714251 [info ] [MainThread]: Running with dbt=1.7.6
+[0m21:59:40.715250 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\idbs9\\.dbt', 'log_path': 'logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt init dbt_eczack_capstone_project', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m21:59:40.717215 [debug] [MainThread]: Starter project path: C:\dataEngineering\ecZach_Capstone_Project\data-transformation\.venv\Lib\site-packages\dbt\include\starter_project
+[0m21:59:40.772541 [info ] [MainThread]: 
+Your new dbt project "dbt_eczack_capstone_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m21:59:40.774331 [info ] [MainThread]: Setting up your profile.
+[0m22:00:49.877773 [info ] [MainThread]: Profile dbt_eczack_capstone_project written to C:\Users\idbs9\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m22:00:49.880778 [debug] [MainThread]: Command `dbt init` succeeded at 22:00:49.879776 after 69.23 seconds
+[0m22:00:49.882773 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AE35E9390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AEA840D10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AEA0AE250>]}
+[0m22:00:49.883771 [debug] [MainThread]: Flushing usage events
+[0m22:01:54.195209 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021F5596B350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021F554AA750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021F554AAB50>]}
+
+
+============================== 22:01:54.199209 | ecbdeb6a-2777-494b-a550-57e0aefc6e5c ==============================
+[0m22:01:54.199209 [info ] [MainThread]: Running with dbt=1.7.6
+[0m22:01:54.200209 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\idbs9\\.dbt', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'debug': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt debug', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m22:01:54.201210 [info ] [MainThread]: dbt version: 1.7.6
+[0m22:01:54.201210 [info ] [MainThread]: python version: 3.11.6
+[0m22:01:54.202210 [info ] [MainThread]: python path: C:\dataEngineering\ecZach_Capstone_Project\data-transformation\.venv\Scripts\python.exe
+[0m22:01:54.203210 [info ] [MainThread]: os info: Windows-10-10.0.22621-SP0
+[0m22:01:54.580540 [info ] [MainThread]: Using profiles dir at C:\Users\idbs9\.dbt
+[0m22:01:54.581540 [info ] [MainThread]: Using profiles.yml file at C:\Users\idbs9\.dbt\profiles.yml
+[0m22:01:54.581540 [info ] [MainThread]: Using dbt_project.yml file at C:\dataEngineering\ecZach_Capstone_Project\data-transformation\dbt_project.yml
+[0m22:01:54.582540 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m22:01:54.584540 [debug] [MainThread]: Command `dbt debug` failed at 22:01:54.583539 after 0.44 seconds
+[0m22:01:54.584540 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021F555635D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021F5551C150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021F4E63B350>]}
+[0m22:01:54.585541 [debug] [MainThread]: Flushing usage events
+[0m22:00:31.762599 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AEE6546990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AEE684D710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AEE689A6D0>]}
+
+
+============================== 22:00:31.768768 | 5a0cc835-2f36-4985-b9b4-b65ebe4f6a52 ==============================
+[0m22:00:31.768768 [info ] [MainThread]: Running with dbt=1.7.6
+[0m22:00:31.769790 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\idbs9\\.dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt init dbt_eczack_capstone_project', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m22:00:31.770801 [debug] [MainThread]: Starter project path: C:\dataEngineering\ecZach_Capstone_Project\data-transformation\.venv\Lib\site-packages\dbt\include\starter_project
+[0m22:00:31.817303 [info ] [MainThread]: 
+Your new dbt project "dbt_eczack_capstone_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m22:00:31.820304 [info ] [MainThread]: Setting up your profile.
+[0m22:03:16.410002 [info ] [MainThread]: Profile dbt_eczack_capstone_project written to C:\Users\idbs9\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m22:03:16.413001 [debug] [MainThread]: Command `dbt init` succeeded at 22:03:16.413001 after 164.71 seconds
+[0m22:03:16.414002 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AEE6CFD4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AEDFA295D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AEDF78BF90>]}
+[0m22:03:16.415004 [debug] [MainThread]: Flushing usage events
+[0m22:03:25.132137 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF51EE92D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF51F56F90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF51EF9D50>]}
+
+
+============================== 22:03:25.137138 | adb79c79-3a0e-4d48-8855-68f075d18073 ==============================
+[0m22:03:25.137138 [info ] [MainThread]: Running with dbt=1.7.6
+[0m22:03:25.138137 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\idbs9\\.dbt', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'invocation_command': 'dbt debug', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m22:03:25.138137 [info ] [MainThread]: dbt version: 1.7.6
+[0m22:03:25.139137 [info ] [MainThread]: python version: 3.11.6
+[0m22:03:25.139998 [info ] [MainThread]: python path: C:\dataEngineering\ecZach_Capstone_Project\data-transformation\.venv\Scripts\python.exe
+[0m22:03:25.141007 [info ] [MainThread]: os info: Windows-10-10.0.22621-SP0
+[0m22:03:25.526865 [info ] [MainThread]: Using profiles dir at C:\Users\idbs9\.dbt
+[0m22:03:25.528830 [info ] [MainThread]: Using profiles.yml file at C:\Users\idbs9\.dbt\profiles.yml
+[0m22:03:25.529829 [info ] [MainThread]: Using dbt_project.yml file at C:\dataEngineering\ecZach_Capstone_Project\data-transformation\dbt_project.yml
+[0m22:03:25.530828 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m22:03:25.531829 [debug] [MainThread]: Command `dbt debug` failed at 22:03:25.531829 after 0.45 seconds
+[0m22:03:25.532861 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF518252D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF52662090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF526608D0>]}
+[0m22:03:25.532861 [debug] [MainThread]: Flushing usage events
