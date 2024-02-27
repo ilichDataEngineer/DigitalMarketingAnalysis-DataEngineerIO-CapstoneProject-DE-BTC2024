@@ -186,6 +186,9 @@ def save_results_to_csv(data):
                             # Convert 'Value' column to string representation
                             result_dfs[json_result_type]['Value'] = result_dfs[json_result_type]['Value'].astype(str)
 
+                            # Fill NaN values in 'SPosition' with the last non-null value
+                            result_dfs[json_result_type]['SPosition'] = result_dfs[json_result_type]['SPosition'].ffill()
+
                             # Drop duplicate rows based on 'Query', 'Col', and 'Value' columns
                             result_dfs[json_result_type] = result_dfs[json_result_type].drop_duplicates(subset=['Query', 'Col', 'Value'])
 
