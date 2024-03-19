@@ -4,8 +4,8 @@
 dataengineer.io
 DataEngineerIO-CapstoneProject-DE-BTC2024
 
-Architecture V1.0
-<iframe frameborder="0" style="width:100%;height:700px;" src="https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1vvm3tRAUStz0YnUa04GjmA_GuhsoZeCe"></iframe>
+**Architecture V1.0**
+![Architecture V1.0 Diagram](assets/capstone_project_diagram-arquitecture_v1_opt.jpg)
 
 # Introduction and Goals
 
